@@ -1,7 +1,5 @@
 import siteMetadata from '@/data/siteMetadata'
 import { getFeed } from '../lib/medium'
-import NextImage from 'next/image'
-import Link from '@/components/Link'
 import Card from '@/components/Card'
 import { PageSeo } from '@/components/SEO'
 import { convert } from 'html-to-text'

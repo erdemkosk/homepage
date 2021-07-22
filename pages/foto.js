@@ -1,8 +1,6 @@
 import siteMetadata from '@/data/siteMetadata'
 import { getTable } from '../lib/airtable'
 import NextImage from 'next/image'
-import Link from '@/components/Link'
-import Card from '@/components/Card'
 import { PageSeo } from '@/components/SEO'
 
 function Photos({ data }) {
