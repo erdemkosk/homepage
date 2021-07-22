@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Cors from 'cors'
 
 import siteMetadata from '@/data/siteMetadata'
 
@@ -18,7 +19,6 @@ const Disqus = ({ frontMatter }) => {
       const script = document.createElement('script')
       script.src = 'https://' + siteMetadata.comment.disqus.shortname + '.disqus.com/embed.js'
       script.setAttribute('data-timestamp', +new Date())
-      script.setAttribute('crossorigin', 'anonymous')
       script.async = true
       document.body.appendChild(script)
     } else {
