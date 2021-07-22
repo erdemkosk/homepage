@@ -2,15 +2,19 @@
 name: M.Erdem Köşk
 avatar: /static/images/avatar.png
 occupation: Backend Developer
-company: Getir
+company: (@)Getir
 email: erdemkosk@gmail.com
-twitter: https://twitter.com/Twitter
-linkedin: https://www.linkedin.com
-github: https://github.com
+twitter: https://twitter.com/erdemkosk
+linkedin: https://www.linkedin.com/in/erdemkosk/
+github: https://github.com/erdemkosk
 ---
 
-Tails Azimuth is a professor of atmospheric sciences at the Stanford AI Lab. His research interests includes complexity modelling of tailwinds, headwinds and crosswinds.
+Merhaba, kişisel sayfama hoşgeldiniz...
 
-He leads the clean energy group which develops 3D air pollution-climate models, writes differential equation solvers, and manufactures titanium plated air ballons. In his free time he bakes raspberry pi.
+Yeni teknolojileri, yazılım kalıplarını, programlama dilleri ve yazılım araçlarını öğrenmekten ve öğrendiklerimi paylaşmaktan keyif alıyorum. Sayfalar arasında gezerken beni biraz olsun tanıma fırsatı bulabilirsiniz.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.
+[![MEK LOGO](https://media.giphy.com/media/WYGl9XwOXq0LySgMIx/giphy.gif)](https://media.giphy.com/media/WYGl9XwOXq0LySgMIx/giphy.gif)
+
+Projelerimi, tecrübelerimi ve kendimi geliştirmek için yaptığım çalışmalar hakkında detaylı bilgi bulabilirsiniz.
+
+Burada sunulan tüm bilgiler, okuyuculara herhangi bir bildirimde bulunmadan değişebilir. Hayatım umutla devam ediyor 😎. Go hard Rocky!

@@ -8,6 +8,9 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
+  images: {
+    domains: ['dl.airtable.com', 'images.unsplash.com', 'cdn-images-1.medium.com'],
+  },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
       test: /\.(png|jpe?g|gif|mp4)$/i,
