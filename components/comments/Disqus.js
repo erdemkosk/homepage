@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Cors from 'cors'
 
 import siteMetadata from '@/data/siteMetadata'
 
