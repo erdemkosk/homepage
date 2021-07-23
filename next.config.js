@@ -9,7 +9,15 @@ module.exports = withBundleAnalyzer({
     dirs: ['pages', 'components', 'lib', 'layouts', 'scripts'],
   },
   images: {
-    domains: ['dl.airtable.com', 'images.unsplash.com', 'cdn-images-1.medium.com', 'i.imgur.com'],
+    domains: [
+      'dl.airtable.com',
+      'images.unsplash.com',
+      'cdn-images-1.medium.com',
+      'i.imgur.com',
+      'camo.githubusercontent.com',
+      'media.giphy.com',
+      'a.fsdn.com',
+    ],
   },
   webpack: (config, { dev, isServer }) => {
     config.module.rules.push({
