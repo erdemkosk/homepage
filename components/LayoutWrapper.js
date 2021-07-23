@@ -8,12 +8,21 @@ import Footer from './Footer'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import { useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 
 const LayoutWrapper = ({ children }) => {
-  const [theme, setTheme] = useState(false)
+  const { theme } = useTheme()
+  const validTheme = theme === 'dark' ? 'light' : 'dark'
+  const [changedTheme, setTheme] = useState(validTheme)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return null
 
   const callbackSetTheme = (theme) => {
     setTheme(theme)
+    //console.log(theme)
   }
 
   return (
@@ -23,7 +32,9 @@ const LayoutWrapper = ({ children }) => {
           <div>
             <Link href="/" aria-label="Tailwind CSS Blog">
               <div className="flex items-center justify-between">
-                <div className="mr-3">{theme && theme === 'light' ? <LogoDark /> : <Logo />}</div>
+                <div className="mr-3">
+                  {changedTheme && changedTheme === 'light' ? <LogoDark /> : <Logo />}
+                </div>
                 {typeof siteMetadata.headerTitle === 'string' ? (
                   <div className="hidden h-6 text-2xl font-semibold sm:block">
                     {siteMetadata.headerTitle}
