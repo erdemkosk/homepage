@@ -1,7 +1,7 @@
 const siteMetadata = {
   title: 'M.Erdem Köşk',
   author: 'M.Erdem Köşk',
-  headerTitle: 'MEK',
+  headerTitle: '',
   description: 'Birşeyi öğrenmenin tek yolu onu basit şekilde anlatmaktadır.',
   language: 'en-us',
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
