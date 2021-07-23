@@ -2,8 +2,13 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="tr">
         <Head>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `UA-46287596-1`,
+            }}
+          />
           <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
           <link
             rel="icon"
