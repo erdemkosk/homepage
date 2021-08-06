@@ -123,7 +123,7 @@ export default function PostLayout({ frontMatter, authorDetails, next, prev, chi
                     {next && (
                       <div>
                         <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
-                          SOnraki Makale
+                          Sonraki Makale
                         </h2>
                         <div className="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400">
                           <Link href={`/blog/${next.slug}`}>{next.title}</Link>
