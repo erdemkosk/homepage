@@ -9,12 +9,11 @@ linkedin: https://www.linkedin.com/in/erdemkosk/
 github: https://github.com/erdemkosk
 ---
 
-Merhaba, kişisel sayfama hoşgeldiniz...
+Hey there...
 
-Yeni teknolojileri, yazılım kalıplarını, programlama dilleri ve yazılım araçlarını öğrenmekten ve öğrendiklerimi paylaşmaktan keyif alıyorum. Sayfalar arasında gezerken beni biraz olsun tanıma fırsatı bulabilirsiniz.
+I'm a **Senior Backend Developer** with computer engineering background. Enthusiastic computer engineer with 7+ years experience participating in the complete product development lifecycle of successfully launched applications.
 
 [![MEK LOGO](https://media.giphy.com/media/WYGl9XwOXq0LySgMIx/giphy.gif)](https://media.giphy.com/media/WYGl9XwOXq0LySgMIx/giphy.gif)
 
-Projelerimi, tecrübelerimi ve kendimi geliştirmek için yaptığım çalışmalar hakkında detaylı bilgi bulabilirsiniz.
-
-Burada sunulan tüm bilgiler, okuyuculara herhangi bir bildirimde bulunmadan değişebilir. Hayatım umutla devam ediyor 😎. Go hard Rocky!
+Thanks to the different projects I have been involved in, I have obtained a wide range of different information.
+Go hard Rocky!

@@ -9,12 +9,12 @@ export default function Pagination({ totalPages, currentPage }) {
       <nav className="flex justify-between">
         {!prevPage && (
           <button rel="previous" className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Önceki
+            Previous
           </button>
         )}
         {prevPage && (
           <Link href={currentPage - 1 === 1 ? `/blog/` : `/blog/page/${currentPage - 1}`}>
-            <button rel="previous">Önceki</button>
+            <button rel="previous">Previous</button>
           </Link>
         )}
         <span>
@@ -22,12 +22,12 @@ export default function Pagination({ totalPages, currentPage }) {
         </span>
         {!nextPage && (
           <button rel="next" className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Sonraki
+            Next
           </button>
         )}
         {nextPage && (
           <Link href={`/blog/page/${currentPage + 1}`}>
-            <button rel="next">Sonraki</button>
+            <button rel="next">Next</button>
           </Link>
         )}
       </nav>

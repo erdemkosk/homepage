@@ -2,7 +2,7 @@ const siteMetadata = {
   title: 'M.Erdem Köşk',
   author: 'M.Erdem Köşk',
   headerTitle: '',
-  description: 'Yazılım, tasarım ve teknoloji içeren blog sitesi.',
+  description: 'Personel website related with software, design and technology.',
   language: 'tr-Tr',
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
   siteRepo: 'https://github.com/timlrx/tailwind-nextjs-starter-blog',

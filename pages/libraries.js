@@ -6,12 +6,17 @@ import { PageSeo } from '@/components/SEO'
 function Photos({ data }) {
   return (
     <>
-      <PageSeo title={`Foto - ${siteMetadata.author}`} description={siteMetadata.description} />
+      <PageSeo
+        title={`libraries - ${siteMetadata.author}`}
+        description={siteMetadata.description}
+      />
       <div className="pt-6 pb-8 space-y-2 md:space-y-5">
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-          Fotoğraflar
+          Libraries
         </h1>
-        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">Chill Out</p>
+        <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
+          My open source libraries
+        </p>
       </div>
       <div className="c-large mt-10">
         <div className="grid sm:grid-cols-2 gap-10 ">
@@ -25,7 +30,10 @@ function Photos({ data }) {
                 layout="responsive"
               />
               <div className="mt-2">
-                <h5 className="font-bold">{d.Name}</h5>
+                <a href={d.url}>
+                  <h5 className="font-bold">{d.Name}</h5>
+                </a>
+
                 <p className="text-gray-500">{d.Notes}</p>
               </div>
             </div>

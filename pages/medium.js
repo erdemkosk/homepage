@@ -13,7 +13,7 @@ function Photos({ data }) {
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
             Medium
           </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">Medium Makalelerim</p>
+          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">Medium Blog's</p>
         </div>
         <div className="container py-12">
           <div className="flex flex-wrap -m-4">
