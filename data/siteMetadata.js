@@ -1,6 +1,6 @@
 const siteMetadata = {
-  title: 'M.Erdem Köşk',
-  author: 'M.Erdem Köşk',
+  title: 'Erdem Köşk',
+  author: 'Erdem Köşk',
   headerTitle: '',
   description:
     "I'm Erdem Köşk ,this is my personel website related with software, design and technology. ",

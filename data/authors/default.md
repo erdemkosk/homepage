@@ -1,5 +1,5 @@
 ---
-name: M.Erdem Köşk
+name: Erdem Köşk
 avatar: /static/images/avatar.png
 occupation: Backend Developer
 company: (@)Getir
