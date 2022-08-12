@@ -1,5 +1,11 @@
 const projectsData = [
   {
+    title: 'Streamle',
+    description: `Find something to watch everyday on fav streaming service.`,
+    imgSrc: 'https://i.imgur.com/4ujbAP8.png',
+    href: '/blog/streamle',
+  },
+  {
     title: 'Quiz It',
     description: `Quiz It is an internet application where you can easily study English words. You can easily learn words from among many words prepared for you.`,
     imgSrc:
