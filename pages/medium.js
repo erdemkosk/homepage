@@ -3,6 +3,7 @@ import { getFeed } from '../lib/medium'
 import Card from '@/components/Card'
 import { PageSeo } from '@/components/SEO'
 import { convert } from 'html-to-text'
+import cheerio from 'cheerio'
 
 function Photos({ data }) {
   return (
@@ -26,7 +27,7 @@ function Photos({ data }) {
                     wordwrap: 130,
                   }).substring(0, 400) + '...'
                 }
-                imgSrc={d.thumbnail}
+                imgSrc={extractImageUrlFromDescription(d.content)}
                 href={d.link}
               />
             ))}
@@ -46,5 +47,11 @@ export async function getStaticProps() {
     },
     revalidate: 600,
   }
+}
+function extractImageUrlFromDescription(description) {
+  const $ = cheerio.load(description)
+  const firstImage = $('img').first()
+  console.log(firstImage.attr('src'))
+  return firstImage.attr('src')
 }
 export default Photos
