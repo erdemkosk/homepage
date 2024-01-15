@@ -17,6 +17,7 @@ module.exports = withBundleAnalyzer({
       'camo.githubusercontent.com',
       'media.giphy.com',
       'a.fsdn.com',
+      'v5.airtableusercontent.com',
     ],
   },
   webpack: (config, { dev, isServer }) => {

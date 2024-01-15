@@ -51,7 +51,6 @@ export async function getStaticProps() {
 function extractImageUrlFromDescription(description) {
   const $ = cheerio.load(description)
   const firstImage = $('img').first()
-  console.log(firstImage.attr('src'))
   return firstImage.attr('src')
 }
 export default Photos
