@@ -2,9 +2,12 @@
   "name": "tailwind-nextjs-starter-blog",
   "version": "1.0.0-canary.0",
   "private": true,
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
-    "start": "next-remote-watch ./data",
-    "dev": "next dev",
+    "start": " NODE_OPTIONS=--openssl-legacy-provider next-remote-watch ./data",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider next dev",
     "build": "next build && node ./scripts/generate-sitemap",
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
