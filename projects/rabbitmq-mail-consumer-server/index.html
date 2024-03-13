@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>rabbitmq-mail-consumer-server</title>
+    <meta name="description" content="">
+    <meta name="keywords" content='blog, erdemkosk, erdem köşk, mustafa erdem köşk'>
+
+    <meta property="og:url" content="https://www.erdemkosk.com/projects/rabbitmq-mail-consumer-server/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="rabbitmq-mail-consumer-server">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://www.erdemkosk.com/images/avatar.jpg">
+    <meta property="og:image:secure_url" content="https://www.erdemkosk.com/images/avatar.jpg">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="rabbitmq-mail-consumer-server">
+    <meta name="twitter:description" content="">
+    <meta property="twitter:domain" content="https://www.erdemkosk.com/projects/rabbitmq-mail-consumer-server/">
+    <meta property="twitter:url" content="https://www.erdemkosk.com/projects/rabbitmq-mail-consumer-server/">
+    <meta name="twitter:image" content="https://www.erdemkosk.com/images/avatar.jpg">
+
+    
+    <link rel="canonical" href="https://www.erdemkosk.com/projects/rabbitmq-mail-consumer-server/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://www.erdemkosk.com/">
+                <img src='/images/avatar.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://www.erdemkosk.com/">Erdem Köşk</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://www.erdemkosk.com/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.erdemkosk.com/posts/"><span data-feather='activity'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.erdemkosk.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.erdemkosk.com/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/erdemkosk"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://medium.com/@erdemkosk"><span data-feather='paperclip'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://www.erdemkosk.com/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.erdemkosk.com/posts/"><span data-feather='activity'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.erdemkosk.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.erdemkosk.com/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/erdemkosk"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://medium.com/@erdemkosk"><span data-feather='paperclip'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    
+
+    <div class="post container">
+
+    <div class="post-header-section">
+        <h1>rabbitmq-mail-consumer-server</h1>
+    </div>
+
+    <div class="post-content">
+        <h3 id="what-is-it-">What is it ?</h3>
+<blockquote>
+<p>They are structures designed on working in agricultural lands. On vehicles that do not have a speedometer such as a combine harvester, it can detect speeds thanks to the sensors. By the way, it tells the user how many meters it will be planting crops.</p>
+</blockquote>
+<p><a href="https://github.com/erdemkosk/rabbitmq-mail-consumer-server">Github</a></p>
+<h1 id="rabbitmq-mail-consumer-server">rabbitmq-mail-consumer-server</h1>
+<p><img src="https://i.imgur.com/z6YHS5I.png" alt="Logo"></p>
+<p>Rabbitmq-mail-consumer-server is an independent mail sending server that abstracts the sending mails from system. Services that want to send mail do not need to know where and how this server works 😎. Just make sure you&rsquo;re looking at the same rabbit mq channel.</p>
+<blockquote>
+<p>Sending mail is abstracted from the whole system. You don&rsquo;t have to think ✌️.</p>
+</blockquote>
+<h3 id="tech">Tech</h3>
+<p><img src="https://i.imgur.com/hlDKK7Z.png" alt="Tech">
+Rabbitmq-mail-consumer-server uses a number of open source projects to work properly:</p>
+<ul>
+<li>[Node Js] - for runnig server</li>
+<li>[Rabbit MQ] - for getting messages from another server</li>
+<li>[Redis] - for checking email blacklist</li>
+</ul>
+<h3 id="for-blacklist">For Blacklist</h3>
+<p>You need to add a mail adress to redis.</p>
+<blockquote>
+<p>/unsubscribe?email=(with encrypted mail)
+<img src="https://i.imgur.com/saREwA7.png" alt="Redis"></p>
+</blockquote>
+<h3 id="installation">Installation</h3>
+<p>Rabbitmq-mail-consumer-server requires <a href="https://nodejs.org/">Node.js</a> v8+ to run.</p>
+<p>Install the dependencies and devDependencies and start the server.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ cd rabbitmq-mail-consumer-server
+</span></span><span style="display:flex;"><span>$ npm install
+</span></span><span style="display:flex;"><span>$ node app
+</span></span></code></pre></div><p>For Make A Docker Image:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ docker build -t  rabbitmq-mail-consumer-server .
+</span></span><span style="display:flex;"><span>$ docker run --env-file .env -p 5000:5000 rabbitmq-mail-consumer-server
+</span></span></code></pre></div><p>Pull From Docker Hub</p>
+<ul>
+<li>latest</li>
+<li>rpi =&gt; ARM build for raspperry pi</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ docker run --env-file .env -p 5000:5000 erdemkosk/rabbitmq-mail-consumer-server:latest
+</span></span><span style="display:flex;"><span>or
+</span></span><span style="display:flex;"><span>$ docker run --env-file .env -p 5000:5000 erdemkosk/rabbitmq-mail-consumer-server:rpi
+</span></span></code></pre></div><p>For Docker-Compose</p>
+<ul>
+<li>latest</li>
+<li>rpi =&gt; ARM build for raspperry pi</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>$ docker-compose -f docker-compose-latest.yml up
+</span></span><span style="display:flex;"><span>or
+</span></span><span style="display:flex;"><span>$ docker-compose -f docker-compose-rpi.yml up
+</span></span></code></pre></div><h3 id="running-stages">Running Stages</h3>
+<p>You need to send messages from your server to rabbit mq channel when you need to send mail.
+Forget Password Mail:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>  rabbitMq.sendRabbitMQ<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;mailChannel&#39;</span>, JSON.stringify<span style="color:#f92672">({</span>
+</span></span><span style="display:flex;"><span>    email: <span style="color:#e6db74">&#39;testme-app@yandex.ru&#39;</span>,
+</span></span><span style="display:flex;"><span>    nameSurname: <span style="color:#e6db74">&#39;Erdem Köşk&#39;</span>,
+</span></span><span style="display:flex;"><span>    type: <span style="color:#e6db74">&#39;forget&#39;</span>,
+</span></span><span style="display:flex;"><span>    appName: <span style="color:#e6db74">&#39;Test Me&#39;</span>,
+</span></span><span style="display:flex;"><span>    forgetTitle: <span style="color:#e6db74">&#39;Şifreni Unutmuşsun :(&#39;</span>,
+</span></span><span style="display:flex;"><span>    forgetMessage: <span style="color:#e6db74">&#39;&lt;b&gt;nameSurname&lt;/b&gt; şifreni unutmuşsun! Aşağıdaki adımları takip edelim.&#39;</span>,
+</span></span><span style="display:flex;"><span>    mailIcon: <span style="color:#e6db74">&#39;https://img.icons8.com/clouds/100/000000/jake.png&#39;</span>,
+</span></span><span style="display:flex;"><span>    webSiteLink: <span style="color:#e6db74">&#39;http://localhost:3000&#39;</span>,
+</span></span><span style="display:flex;"><span>    webSiteLinkButton: <span style="color:#e6db74">&#39;Hadi Başlayalım!&#39;</span>,
+</span></span><span style="display:flex;"><span>    warningText: <span style="color:#e6db74">&#39;Şifre sıfırlama talebini siz yollamadıysanız, lütfen dikkate almayın !&#39;</span>,
+</span></span><span style="display:flex;"><span>    sincerelyText: <span style="color:#e6db74">&#39;Sevgilerle&#39;</span>,
+</span></span><span style="display:flex;"><span>    needHelpText: <span style="color:#e6db74">&#39;Yardım mı lazım?&#39;</span>,
+</span></span><span style="display:flex;"><span>    needHelpLink: <span style="color:#e6db74">&#39;http://erdemkosk.com&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}))</span>;
+</span></span></code></pre></div><p>Register Mail:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span> rabbitMq.sendRabbitMQ<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;mailChannel&#39;</span>, JSON.stringify<span style="color:#f92672">({</span>
+</span></span><span style="display:flex;"><span>    email: <span style="color:#e6db74">&#39;testme-app@yandex.ru&#39;</span>,
+</span></span><span style="display:flex;"><span>    nameSurname: <span style="color:#e6db74">&#39;Erdem Köşk&#39;</span>,
+</span></span><span style="display:flex;"><span>    type: <span style="color:#e6db74">&#39;register&#39;</span>,
+</span></span><span style="display:flex;"><span>    appName: <span style="color:#e6db74">&#39;Test Me&#39;</span>,
+</span></span><span style="display:flex;"><span>    welcomeTitle: <span style="color:#e6db74">&#39;Hoş Geldin!&#39;</span>,
+</span></span><span style="display:flex;"><span>    welcomeMessage: <span style="color:#e6db74">&#39;Seni aramızda görmek çok güzel &lt;b&gt; nameSurname &lt;/b&gt; ! &lt;br/&gt; İngilizce kelime öğrenmenin en kolay yolu 🤙. Boş zamanlarında senin için oluşturulan rastgele ingilizce kelime testlerini cevapla 🙏 Kendini geliştir!&#39;</span>,
+</span></span><span style="display:flex;"><span>    mailIcon: <span style="color:#e6db74">&#39;https://img.icons8.com/clouds/100/000000/america.png&#39;</span>,
+</span></span><span style="display:flex;"><span>    webSiteLink: <span style="color:#e6db74">&#39;http://localhost:3000&#39;</span>,
+</span></span><span style="display:flex;"><span>    webSiteLinkButton: <span style="color:#e6db74">&#39;Hadi Başlayalım!&#39;</span>,
+</span></span><span style="display:flex;"><span>    thanksText: <span style="color:#e6db74">&#39;Projemize destek verdiğin için teşekkür ederiz!&#39;</span>,
+</span></span><span style="display:flex;"><span>    sincerelyText: <span style="color:#e6db74">&#39;Sevgilerle&#39;</span>,
+</span></span><span style="display:flex;"><span>    needHelpText: <span style="color:#e6db74">&#39;Yardım mı lazım?&#39;</span>,
+</span></span><span style="display:flex;"><span>    needHelpLink: <span style="color:#e6db74">&#39;http://erdemkosk.com&#39;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">}))</span>;
+</span></span></code></pre></div><p>When messages arrvied rabbitmq-mail-consumer-server, it controls mail in blacklist (from redis).</p>
+<p>If In Not Blacklist:
+<img src="https://i.imgur.com/2cWUecy.png" alt="In Not Blacklist"></p>
+<p>If In Blacklist:
+<img src="https://i.imgur.com/bFe9r4e.png" alt="In Blacklist"></p>
+<h3 id="env-variables">Env Variables</h3>
+<table>
+<thead>
+<tr>
+<th>Env</th>
+<th style="text-align:center">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NODE_ENV</td>
+<td style="text-align:center">dev</td>
+</tr>
+<tr>
+<td>RABBITMQ_URL</td>
+<td style="text-align:center">amqp url</td>
+</tr>
+<tr>
+<td>RABBITMQ_CHANNEL</td>
+<td style="text-align:center">amqp channel</td>
+</tr>
+<tr>
+<td>MAIL_USER</td>
+<td style="text-align:center">user mail</td>
+</tr>
+<tr>
+<td>MAIL_PASS</td>
+<td style="text-align:center">yser mail password</td>
+</tr>
+<tr>
+<td>MAIL_HOST</td>
+<td style="text-align:center">smtp mail server</td>
+</tr>
+<tr>
+<td>MAIL_PORT</td>
+<td style="text-align:center">smtp mail port</td>
+</tr>
+<tr>
+<td>REDIS_HOST</td>
+<td style="text-align:center">redis url</td>
+</tr>
+<tr>
+<td>REDIS_PASS</td>
+<td style="text-align:center">redis password</td>
+</tr>
+<tr>
+<td>REDIS_PORT</td>
+<td style="text-align:center">redis port</td>
+</tr>
+<tr>
+<td>URL</td>
+<td style="text-align:center">unsubscribe url path</td>
+</tr>
+</tbody>
+</table>
+
+    </div>
+</div>
+
+
+
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>  Happiness should be a function without any parameters.</span>
+    
+    <span>
+       Mustafa Erdem Köşk © 2024
+    </span>
+</footer>
+</body>
+</html>

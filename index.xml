@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Erdem Köşk</title>
+    <link>https://www.erdemkosk.com/</link>
+    <description>Recent content on Erdem Köşk</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.erdemkosk.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Medium Gönderilerinizi Markdown&#39;a Aktarın</title>
+      <link>https://www.erdemkosk.com/posts/medium-makalenizi-md-dosyasina-cevir/</link>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/posts/medium-makalenizi-md-dosyasina-cevir/</guid>
+      <description>Medium Yazılarınızı Markdown&amp;rsquo;a Aktarın Medium makalelerinizi tekrar düzenlemeden ve kopyala/yapıştır yapmadan başka bir yere aktarmanın basit bir çözümü var.&#xA;Öncelikle, bilgisayarınıza node kurmanız gerekiyor.&#xA;Node&amp;rsquo;u yüklemek için tüm platformlar için bir kurulum dosyası mevcut, sadece indirip herhangi bir diğer programı kurar gibi kurun:&#xA;***https://nodejs.org/en/download/*** Node kurulumundan sonra, Windows için Komut İstemi&amp;rsquo;ni veya MacOS veya Linux için Terminali açın ve aşağıdaki komutu çalıştırın:&#xA;npm install -g mediumexporter Bu komut, mediumexporter&amp;lsquo;ı yükler. Kurulum tamamlandıktan sonra Medium yazınızı markdown formatına dışa aktarabilirsiniz.</description>
+    </item>
+    <item>
+      <title>Mikroservis mi? yoksa?</title>
+      <link>https://www.erdemkosk.com/posts/microservicesormonolith/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/posts/microservicesormonolith/</guid>
+      <description>Mikroservis Mi Monolith Mi? Bugün backend mecrasının içinde olduğu en popüler bu iki kavramdan bahsetmek istiyorum. Gelişen teknoloji sistemlere bakış açımızı ve yaklaşım prensibimizide değiştirdi. Önceleri bir makinamızı server olarak kullanırken daha sonraları sanal makinalar hayatımıza girdi.&#xA;Sanal makinalar dünyası belli bir dönem piyasayı domine edip götürdü. Daha sonra container teknolojileri ile birlikte israfı minimum kontrolü maksimum hale getirmiş olduk. Geçen bu uzun yıllar içinde her gün yeni bir bakış açısı bir veya birkaç teknoloji popüler oldu.</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://www.erdemkosk.com/index-about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/index-about/</guid>
+      <description>😎 Hey there&amp;hellip; Hey there! I&amp;rsquo;m Mustafa Erdem Köşk, a Senior Backend Developer with a background in computer engineering. With over 9 years of experience, I&amp;rsquo;ve been an enthusiastic participant in the complete product development lifecycle of various successful applications.&#xA;Through my involvement in diverse projects, I&amp;rsquo;ve amassed a broad spectrum of knowledge. Ready to rock the boat!&#xA;{ &amp;#34;firstName&amp;#34;: &amp;#34;Mustafa Erdem&amp;#34;, &amp;#34;lastName&amp;#34;: &amp;#34;Köşk&amp;#34;, &amp;#34;job&amp;#34;: &amp;#34;@getir&amp;#34;, &amp;#34;expertise&amp;#34;: &amp;#34;Senior Backend Developer&amp;#34;, &amp;#34;whoAmI&amp;#34;: &amp;#34;I&amp;#39;m Erdem Köşk, and this is my personal website dedicated to software, design, and technology.</description>
+    </item>
+    <item>
+      <title>Filecop</title>
+      <link>https://www.erdemkosk.com/projects/filecop/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/projects/filecop/</guid>
+      <description>What is it ? It is very easy to use, you can create a user and encrypt with the information you want. The program also includes a password generator. Setup&#xA;Tables Questions Answers all file type(s) supports all file types ! using internet connection? nope supports all operating systems? only for windows </description>
+    </item>
+    <item>
+      <title>Gri Makina</title>
+      <link>https://www.erdemkosk.com/projects/gri-makina/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/projects/gri-makina/</guid>
+      <description>What is it ? They are structures designed for use in agricultural lands. They can detect speeds on vehicles that do not have a speedometer, such as a combine harvester, thanks to sensors. Additionally, they inform the user about the distance they will be planting crops.&#xA;Easy to use GUI support Robust </description>
+    </item>
+    <item>
+      <title>Jet File Transfer</title>
+      <link>https://www.erdemkosk.com/projects/jet-file-transfer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/projects/jet-file-transfer/</guid>
+      <description>What is it ? Jet File Transfer is an application that allows you to easily share files and folders between devices connected to the same network without using the Internet. Desktop application is free for all desktop operating systems. Since two devices launched as server and client can find each other automatically, just press a button!&#xA;Tables Questions Answers all file type(s) supports all file types ! using internet connection? network is required but does not use your internet !</description>
+    </item>
+    <item>
+      <title>Quiz It</title>
+      <link>https://www.erdemkosk.com/projects/quiz-it/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/projects/quiz-it/</guid>
+      <description>What is it ? Quiz It is an internet application where you can easily study English words. You can easily learn words from among many words prepared for you.&#xA;Node js based api developed for quiz application.&#xA;✨ Demo ✨ Frontend ✨ Backend Prerequisites node 10.15.3 npm 6.4.1 Install npm install Docker docker build -t quiz_api . docker run --env SWAGGER_HOST=localhost -p 4000:4000 quiz_api Usage npm run start Run tests npm run test 🤝 Contributing Contributions, issues and feature requests are welcome!</description>
+    </item>
+    <item>
+      <title>rabbitmq-mail-consumer-server</title>
+      <link>https://www.erdemkosk.com/projects/rabbitmq-mail-consumer-server/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/projects/rabbitmq-mail-consumer-server/</guid>
+      <description>What is it ? They are structures designed on working in agricultural lands. On vehicles that do not have a speedometer such as a combine harvester, it can detect speeds thanks to the sensors. By the way, it tells the user how many meters it will be planting crops.&#xA;Github&#xA;rabbitmq-mail-consumer-server Rabbitmq-mail-consumer-server is an independent mail sending server that abstracts the sending mails from system. Services that want to send mail do not need to know where and how this server works 😎.</description>
+    </item>
+    <item>
+      <title>Streamle</title>
+      <link>https://www.erdemkosk.com/projects/streamle/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/projects/streamle/</guid>
+      <description>What is it ? Each daily Streamle features a photo clip from a popular TV Show or Movie published on a popular streaming platform. Guess in as few tries as possible, and be sure to come back every day for a new Movie/Series.&#xA;Streamle helps you find content to watch on your favorite streaming platform with a triva-like interface inspired by Wordle &amp;amp; Heardle and all &amp;hellip;dle family. Each daily Streamle features a photo clip from a popular TV Show or Movie published on the streaming platform.</description>
+    </item>
+  </channel>
+</rss>

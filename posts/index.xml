@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Erdem Köşk</title>
+    <link>https://www.erdemkosk.com/posts/</link>
+    <description>Recent content in Posts on Erdem Köşk</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 01 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://www.erdemkosk.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Medium Gönderilerinizi Markdown&#39;a Aktarın</title>
+      <link>https://www.erdemkosk.com/posts/medium-makalenizi-md-dosyasina-cevir/</link>
+      <pubDate>Fri, 01 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/posts/medium-makalenizi-md-dosyasina-cevir/</guid>
+      <description>Medium Yazılarınızı Markdown&amp;rsquo;a Aktarın Medium makalelerinizi tekrar düzenlemeden ve kopyala/yapıştır yapmadan başka bir yere aktarmanın basit bir çözümü var.&#xA;Öncelikle, bilgisayarınıza node kurmanız gerekiyor.&#xA;Node&amp;rsquo;u yüklemek için tüm platformlar için bir kurulum dosyası mevcut, sadece indirip herhangi bir diğer programı kurar gibi kurun:&#xA;***https://nodejs.org/en/download/*** Node kurulumundan sonra, Windows için Komut İstemi&amp;rsquo;ni veya MacOS veya Linux için Terminali açın ve aşağıdaki komutu çalıştırın:&#xA;npm install -g mediumexporter Bu komut, mediumexporter&amp;lsquo;ı yükler. Kurulum tamamlandıktan sonra Medium yazınızı markdown formatına dışa aktarabilirsiniz.</description>
+    </item>
+    <item>
+      <title>Mikroservis mi? yoksa?</title>
+      <link>https://www.erdemkosk.com/posts/microservicesormonolith/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      <guid>https://www.erdemkosk.com/posts/microservicesormonolith/</guid>
+      <description>Mikroservis Mi Monolith Mi? Bugün backend mecrasının içinde olduğu en popüler bu iki kavramdan bahsetmek istiyorum. Gelişen teknoloji sistemlere bakış açımızı ve yaklaşım prensibimizide değiştirdi. Önceleri bir makinamızı server olarak kullanırken daha sonraları sanal makinalar hayatımıza girdi.&#xA;Sanal makinalar dünyası belli bir dönem piyasayı domine edip götürdü. Daha sonra container teknolojileri ile birlikte israfı minimum kontrolü maksimum hale getirmiş olduk. Geçen bu uzun yıllar içinde her gün yeni bir bakış açısı bir veya birkaç teknoloji popüler oldu.</description>
+    </item>
+  </channel>
+</rss>

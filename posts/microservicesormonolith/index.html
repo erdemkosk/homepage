@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Mikroservis mi? yoksa?</title>
+    <meta name="description" content="Mikroservis neden gerekli sorusuna cevap bulmak için buradayız.">
+    <meta name="keywords" content='blog, erdemkosk, erdem köşk, mustafa erdem köşk'>
+
+    <meta property="og:url" content="https://www.erdemkosk.com/posts/microservicesormonolith/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Mikroservis mi? yoksa?">
+    <meta property="og:description" content="Mikroservis neden gerekli sorusuna cevap bulmak için buradayız.">
+    <meta property="og:image" content="https://www.erdemkosk.com/path/to/image.png">
+    <meta property="og:image:secure_url" content="https://www.erdemkosk.com/path/to/image.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mikroservis mi? yoksa?">
+    <meta name="twitter:description" content="Mikroservis neden gerekli sorusuna cevap bulmak için buradayız.">
+    <meta property="twitter:domain" content="https://www.erdemkosk.com/posts/microservicesormonolith/">
+    <meta property="twitter:url" content="https://www.erdemkosk.com/posts/microservicesormonolith/">
+    <meta name="twitter:image" content="https://www.erdemkosk.com/path/to/image.png">
+
+    
+    <link rel="canonical" href="https://www.erdemkosk.com/posts/microservicesormonolith/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.224c8e70fed292d18d7d9ae1b36797c99144e0be1117e2ea2c428379c8496551.js" integrity="sha256-IkyOcP7SktGNfZrhs2eXyZFE4L4RF&#43;LqLEKDechJZVE="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://www.erdemkosk.com/">
+                <img src='/images/avatar.jpg' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://www.erdemkosk.com/">Erdem Köşk</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://www.erdemkosk.com/"><span data-feather='home'></span> Home </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.erdemkosk.com/posts/"><span data-feather='activity'></span> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.erdemkosk.com/tags/"><span data-feather='tag'></span> Tags </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.erdemkosk.com/projects/"><span data-feather='code'></span> Projects </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/erdemkosk"><span data-feather='github'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://medium.com/@erdemkosk"><span data-feather='paperclip'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://www.erdemkosk.com/"><span data-feather='home'></span> Home </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.erdemkosk.com/posts/"><span data-feather='activity'></span> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.erdemkosk.com/tags/"><span data-feather='tag'></span> Tags </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.erdemkosk.com/projects/"><span data-feather='code'></span> Projects </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/erdemkosk"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://medium.com/@erdemkosk"><span data-feather='paperclip'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Mikroservis mi? yoksa?</h1>
+        <small role="doc-subtitle">Mikroservis neden gerekli sorusuna cevap bulmak için buradayız.</small>
+        <p class="post-date">January 1, 2021
+        
+        </p>
+
+        <ul class="post-tags">
+        
+            <li class="post-tag"><a href="https://www.erdemkosk.com/tags/blog">blog</a></li>
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <h3 id="mikroservis-mi-monolith-mi">Mikroservis Mi Monolith Mi?</h3>
+<p>Bugün backend mecrasının içinde olduğu en popüler bu iki kavramdan bahsetmek istiyorum. Gelişen teknoloji sistemlere bakış açımızı ve yaklaşım prensibimizide değiştirdi. Önceleri bir makinamızı server olarak kullanırken daha sonraları sanal makinalar hayatımıza girdi.</p>
+<p>Sanal makinalar dünyası belli bir dönem piyasayı domine edip götürdü. Daha sonra container teknolojileri ile birlikte israfı minimum <strong>kontrolü maksimum hale getirmiş olduk.</strong> Geçen bu uzun yıllar içinde her gün yeni bir bakış açısı bir veya birkaç teknoloji popüler oldu.</p>
+<p>Günümüzdeki en popüler konulardan biri artık dilimize pelesenk olmuş mikroservis yapısı ve mimarisi. Yapı olarak tanım olarak herkesin duyduğu bu yapı, bu düşünüş tarzı kimlere göre kimler nasıl kullanmalı üzerinde ise kaynak ciddi miktarda az.</p>
+<p><img src="https://cdn-images-1.medium.com/max/6000/1*8qyjnBJ6MFF0gNKuJKIZmA.jpeg" alt=""></p>
+<p>Biz yazılımcılar teknoloji bağımlısı haline geliyoruz. İşimiz sürekli öğrenmek üzerine olduğu için belli dönem bir şeyi yüceltirken belli dönem bir başka yaklaşım açısını övüyorken kendimizi buluyoruz. Bu yeni gelen teknolojinin çok iyi olduğunu anlamına gelmiyor. <strong>Genelde kaçırdığımız nokta bu oluyor. En iyi programlama dili , en iyi programlama yaklaşımı (object oriented, functional) olmadığı en iyi tasarım yapısıda olamaz.</strong> Mikroservis çok iyidir monolith çok kötü gibi yaklaşımları hrgün biraz daha fazla görüyorum. Teknoloji yada popüler kavramlara hakim olmak bence hala çok önemli olsada kullandığımız bir yapıyı dibine kadar anlamak daha önemli.</p>
+<blockquote>
+<p>Bazen önemli olan bıçağın keskinliği değildir, bıcak kullananın yeteneği ve bilgisidir.</p>
+</blockquote>
+<h3 id="mikro-servis-nedir--avantajları-nelerdir-neden-böyle-bir-şeye-ihtiyaç-oldu-"><strong>Mikro servis nedir ? Avantajları Nelerdir? Neden böyle bir şeye ihtiyaç oldu ?</strong></h3>
+<p>Mikroservis temelinde kodların iş yapan parçacıkların bir yada bir bölümünün sistemin içinden ayrılarak kesilip alınması, ve bu alınan yapıların bağımsız bir sistem olarak geliştirilmesidir. Tüm yapıyı bir logo gibi hayal edersek her logo parçası bağımsız bir yapı oluşturmuş olsun. Biz bunları üst üste koymak yerine parçaladık.</p>
+<p>Peki bunu neden yaptık ?</p>
+<h3 id="bağımsız-deploy-edebilme"><strong>Bağımsız Deploy Edebilme</strong></h3>
+<p>Monolith bir yapıda yani tüm servislerimiz herşeyimiz tek bir servis iken, en ufak bir değişiklik için tüm kodların yeniden deploy edilmesi gereklidir. Tek satır kod bile yazsanız kodun bir parçasını deploy edemediğinizden tüm kodların deploy ve test süreçlerini çalıştırmak zorundasınız.</p>
+<p>Bu hem büyük bir yük hem avaliblity problemi doğurmakla beraber büyük bir tehtid oluşturur.</p>
+<h3 id="anlam-sahipliği"><strong>Anlam Sahipliği</strong></h3>
+<p>Her servis bir işten sorumlu olduğunda herkesin bir anlamda sadece bir işi olmuş demektir. Bu bu düzlemdeki tüm logic işlemlerinin kendinden sorumluğu olduğu anlamına gelmektedir. Bunun güzelliklerinden biri o servisi bilmeyen bir takımın kendi yaptıkları geliştirmeler için başka servislerden endişe etmemesini sağlar.</p>
+<h3 id="yeniden-tasarlanabilirlik"><strong>Yeniden Tasarlanabilirlik</strong></h3>
+<p>Sistemlerimiz ayaktayken örnek olarak mail gönderme tarafı için tamamen bambaşka yeni servisler tasarlayabilir test edebilir aynı anda birden fazla ve farklı servisi ayakta tutabiliriz. Bu çok büyük bir esneklik yeteneği kazandırır. Örnek olarak bir servis Grapql konuşurken bir servis rest cevapları verebilir.</p>
+<p>Yazılım ve teknoloji esnekliği belkide işin en güzel parçalarından biridir. Her mikroservis bambaşka bir programlama dili ile yazılabilinir. Her programa dilinin aşa yukarı başarılı olduğu alanlar vardır. Hız , yazım kolaylığı ve güvenilirlik gibi avantaj ve dezavantajlar barındırırlar. Tüm yapıların en pozitif taraflarına toplama imkanımız olabilir.</p>
+<h3 id="takım-çalışması-yatkınlığı"><strong>Takım Çalışması Yatkınlığı</strong></h3>
+<p>Büyük projeler çok sayıda yazılımcıya ihtiyaç duyar. Bir sürü yazılım takımları her işin bir ucundan tutarak birbirlerini durdurmadan iş yapmaya devam edebilirler. Tüm servisi yapıyı akışı bilmeseler bile kod yazmaya devam edebilirler. Bir iş uçtan uça birbirinden bağımsız geliştirilebilinir.</p>
+<h3 id="scaling"><strong>Scaling</strong></h3>
+<p>Sisteme kritik bir parçası çökmediği sürece bazı servislerin cevap verememesi durumunda sistemin geneli bundan etkilenmez. Örnek olarak auth service çökerse sisteme kimse giremez ama girenler sistemi kullanmaya devam edebilir. Buda monolithe oranlar siyah ve beyaz ikileminden bizi kurtarır.</p>
+<h3 id="monolith"><strong>Monolith</strong></h3>
+<p>Gelelim bu kıyaslamanın diğer yüzüne. Monolith yapılar tüm yapıların tek bir yerden yönetilmesine izin ve fırsat veren yapılardır. Monolithler sanılanın aksine birkaç farklı şekilde oluşturulabilinir.</p>
+<h3 id="the-single-process-monolith"><strong>The Single-Process Monolith</strong></h3>
+<p>En çok gördüğümüz ve kullanılan en basit yapıdır. Tüm servis tek yapıdan oluşur kendi içi dışında bağımlılıkları yoktur. Bu, yapı klasik bir monolit anlayışına uysa da, karşılaştığım çoğu sistem bundan biraz daha karmaşık.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*gGWSqH07ZC5Ibke8_oIWrQ.png" alt="single-process monolith"><strong>single-process monolith</strong></p>
+<h3 id="the-modular-monolith"><strong>The Modular Monolith</strong></h3>
+<p>Tek işlemli monolitin bir alt kümesi olarak modüler monolit, tek işlemin ayrı modüllerden oluştuğu bir varyasyondur. Her biri bağımsız olarak üzerinde çalışılabilir, ancak yine de dağıtım için hepsinin bir araya getirilmesi gerekir.</p>
+<p><img src="https://cdn-images-1.medium.com/max/2000/1*bynp7vu9GgogYeA-CeukCQ.png" alt="Modular Monolith"><em>Modular Monolith</em></p>
+<h3 id="the-distributed-monolith"><strong>The Distributed Monolith</strong></h3>
+<p>Dağıtılmış bir monolit, birden fazla hizmetten oluşan bir sistemdir, ancak herhangi bir nedenle, tüm sistemin birlikte dağıtılması gerekir. Dağıtılmış bir sistemin tüm dezavantajlarına ve tek işlemli bir monolitin dezavantajlarına, her ikisinin de yeterli avantajına sahip olmadan sahiptir.</p>
+<h3 id="avantajları-nedir"><strong>Avantajları Nedir?</strong></h3>
+<p>Mikroservisleri göre birçok avantajı bulunmaktadır. Bu cümleyi üzerine basa basa söylemek istiyorum. Her zaman microservis çok iyidir güzeldir demek doğru değil. Bunun temel nedenlerine gelicek olursak,</p>
+<h3 id="deployment"><strong>Deployment</strong></h3>
+<p>Tüm sistem tek seferde deploy olabildiği için ya siyah ya beyaz gibi bir durum oluşur. Ancak tek seferde deploy olan tek seferde testleri çalıştırılan bir sistem nispeten daha az kompleks olacaktır.</p>
+<h3 id="log-ve-monitoring"><strong>Log ve Monitoring</strong></h3>
+<p>Mikroservis yapısında tüm sistemler birbirleri ile haberleşmek durumunda olduklarından, her birinin anlık takibi yapılması çok daha zor iken tek bir servisin loglarını okumak ve takip etmek nispeten çok daha kolay olacaktır.</p>
+<h3 id="sonuç">Sonuç</h3>
+<blockquote>
+<p>Mikroservis yada monolith ikisinin birbirinden eşsiz avantajları var gibi duruyor. Hangisini tercih edeceğimize projede çalışan insan sayısı kullanını sayısı vb gibi bilgilere bakılarak karar verilmesi en doğrusu olacaktır.</p>
+</blockquote>
+
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>  Happiness should be a function without any parameters.</span>
+    
+    <span>
+       Mustafa Erdem Köşk © 2024
+    </span>
+</footer>
+</body>
+</html>
