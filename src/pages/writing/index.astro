@@ -1,0 +1,42 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SectionHeading from '../../components/SectionHeading.astro';
+import PostCard from '../../components/PostCard.astro';
+import { site } from '../../config/site';
+import { fetchMediumPosts } from '../../lib/medium';
+
+const posts = await fetchMediumPosts('erdemkosk');
+---
+
+<BaseLayout
+  title="Writing"
+  description="Articles by Erdem Köşk on Medium — backend development, Go, Node.js, Kafka, and software engineering."
+>
+  <section class="page-shell py-14 sm:py-18">
+    <SectionHeading
+      eyebrow="writing"
+      title="Articles on Medium"
+      description={`${posts.length} published articles about backend development, tooling, and software patterns.`}
+    />
+
+    <div class="mt-8">
+      <a href={site.social.medium} target="_blank" rel="noopener noreferrer" class="mono text-sm text-[var(--color-accent)] hover:underline">
+        medium.com/@erdemkosk →
+      </a>
+    </div>
+
+    {
+      posts.length > 0 ? (
+        <div class="mt-10 grid gap-4 md:grid-cols-2">
+          {posts.map((post) => (
+            <PostCard post={post} />
+          ))}
+        </div>
+      ) : (
+        <p class="mt-10 text-[var(--color-muted)]">
+          Articles could not be loaded. Visit <a href={site.social.medium} class="link-accent">Medium</a>.
+        </p>
+      )
+    }
+  </section>
+</BaseLayout>

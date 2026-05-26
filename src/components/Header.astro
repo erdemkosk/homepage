@@ -1,0 +1,96 @@
+---
+import { nav, site } from '../config/site';
+import ThemeToggle from './ThemeToggle.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]/90 backdrop-blur-md">
+  <div class="page-shell flex h-[52px] items-center justify-between gap-4">
+    <a href="/" class="group flex min-w-0 items-center gap-3">
+      <img
+        src="/images/avatar.jpg"
+        alt={site.name}
+        width="38"
+        height="38"
+        class="h-[38px] w-[38px] rounded-full border border-[var(--color-border)] object-cover transition group-hover:border-[var(--color-accent)]"
+      />
+      <span class="truncate font-semibold leading-none">{site.name}</span>
+    </a>
+
+    <nav class="hidden items-center md:flex" aria-label="Main navigation">
+      {
+        nav.map((item) => {
+          const active = currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href));
+          return (
+            <a
+              href={item.href}
+              class:list={[
+                'px-2.5 py-1 text-sm transition',
+                active ? 'text-[var(--color-accent)]' : 'text-[var(--color-muted)] hover:text-[var(--color-ink)]',
+              ]}
+              aria-current={active ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+      <span class="mx-2 h-4 w-px bg-[var(--color-border)]"></span>
+      <a href={site.social.github} target="_blank" rel="noopener noreferrer" class="px-2 text-[var(--color-muted)] hover:text-[var(--color-accent)]" aria-label="GitHub">
+        <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+      <a href={site.social.medium} target="_blank" rel="noopener noreferrer" class="px-2 text-[var(--color-muted)] hover:text-[var(--color-accent)]" aria-label="Medium">
+        <svg class="h-5 w-5 fill-current" viewBox="0 0 24 24"><path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42zM24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/></svg>
+      </a>
+      <ThemeToggle />
+    </nav>
+
+    <div class="flex items-center gap-2 md:hidden">
+      <ThemeToggle />
+      <details class="relative">
+        <summary class="list-none cursor-pointer rounded-md border border-[var(--color-border)] px-3 py-1.5 text-sm [&::-webkit-details-marker]:hidden">
+          Menu
+        </summary>
+        <div class="absolute right-0 mt-2 w-52 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface-elevated)] p-2 shadow-2xl">
+          {nav.map((item) => (
+            <a href={item.href} class="block rounded px-3 py-2 text-sm text-[var(--color-muted)] hover:bg-[var(--color-surface-hover)] hover:text-[var(--color-ink)]">
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  (function () {
+    var photographyPath = '/photography';
+
+    function prefetchPhotography() {
+      if (document.querySelector('link[data-photo-prefetch]')) return;
+      var link = document.createElement('link');
+      link.rel = 'prefetch';
+      link.href = photographyPath;
+      link.setAttribute('data-photo-prefetch', 'true');
+      document.head.appendChild(link);
+    }
+
+    document.addEventListener('mouseover', function (event) {
+      var target = event.target;
+      if (!(target instanceof Element)) return;
+      var link = target.closest('a[href="' + photographyPath + '"]');
+      if (link) prefetchPhotography();
+    }, { passive: true });
+
+    document.addEventListener('click', function (event) {
+      var target = event.target;
+      if (!(target instanceof Element)) return;
+      var link = target.closest('a[href="' + photographyPath + '"]');
+      if (!link || event.defaultPrevented || event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      document.documentElement.classList.add('nav-loading');
+    });
+  })();
+</script>

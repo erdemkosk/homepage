@@ -1,0 +1,30 @@
+<button
+  id="theme-toggle"
+  type="button"
+  class="inline-flex h-8 w-8 items-center justify-center rounded-md text-[var(--color-muted)] transition hover:text-[var(--color-accent)]"
+  aria-label="Toggle color theme"
+>
+  <svg class="hidden h-[18px] w-[18px] html-light-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path>
+  </svg>
+  <svg class="h-[18px] w-[18px] html-light-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+  </svg>
+</button>
+
+<style>
+  :global(html.light) .html-light-hide { display: none; }
+  :global(html.light) .html-light-show { display: block; }
+  :global(html:not(.light)) .html-light-show { display: none; }
+</style>
+
+<script>
+  const button = document.getElementById('theme-toggle');
+
+  button?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const isLight = root.classList.toggle('light');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+  });
+</script>

@@ -1,0 +1,324 @@
+---
+import { site } from '../config/site';
+
+const profile = {
+  name: site.fullName,
+  alias: site.github,
+  role: site.title,
+  location: site.location,
+  repos: site.publicRepos,
+  since: site.githubSince,
+  status: 'shipping code',
+};
+
+const jsonOutput = JSON.stringify(profile, null, 2);
+
+function highlightJson(source: string): string {
+  return source
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"([^"]+)":/g, '<span class="json-key">"$1"</span>:')
+    .replace(/: "([^"]*)"/g, ': <span class="json-string">"$1"</span>')
+    .replace(/: (\d+)/g, ': <span class="json-number">$1</span>');
+}
+
+const jsonHtml = highlightJson(jsonOutput);
+
+const loginLine = `Last login: ${new Date().toLocaleString('en-US', {
+  weekday: 'short',
+  month: 'short',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+})} on ttys001`;
+---
+
+<div class="terminal-window dev-card overflow-hidden" data-terminal>
+  <div class="terminal-header">
+    <div class="terminal-dots" aria-hidden="true">
+      <span class="dot dot-close"></span>
+      <span class="dot dot-min"></span>
+      <span class="dot dot-max"></span>
+    </div>
+    <span class="terminal-title mono">erdemkosk — zsh — 80×24</span>
+  </div>
+
+  <div class="terminal-body mono" aria-label="Terminal session">
+    <div class="terminal-scroll" data-terminal-output>
+      <div class="terminal-line terminal-muted">{loginLine}</div>
+    </div>
+    <div class="terminal-active-line" data-terminal-active hidden>
+      <span class="terminal-prompt">erdemkosk@dev ~ % </span>
+      <span class="terminal-input" data-terminal-input></span>
+      <span class="terminal-cursor" data-terminal-cursor aria-hidden="true"></span>
+    </div>
+  </div>
+</div>
+
+<script define:vars={{ loginLine, jsonOutput, jsonHtml, githubUser: site.github }}>
+  const session = [
+    { kind: 'cmd', text: 'whoami' },
+    { kind: 'out', text: githubUser, className: 'terminal-out' },
+    { kind: 'cmd', text: 'cat whoami.json | jq .' },
+    { kind: 'json', html: jsonHtml, raw: jsonOutput },
+  ];
+
+  const PROMPT = 'erdemkosk@dev ~ % ';
+
+  function prefersReducedMotion() {
+    return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  function appendPromptLine(container, command) {
+    const line = document.createElement('div');
+    line.className = 'terminal-line terminal-cmd-line';
+    line.innerHTML = `<span class="terminal-prompt">${PROMPT}</span><span class="terminal-cmd">${command}</span>`;
+    container.appendChild(line);
+    container.scrollTop = container.scrollHeight;
+    return line;
+  }
+
+  function appendOutput(container, text, className = '') {
+    const line = document.createElement('div');
+    line.className = `terminal-line ${className}`.trim();
+    line.textContent = text;
+    container.appendChild(line);
+    container.scrollTop = container.scrollHeight;
+    return line;
+  }
+
+  function appendJsonBlock(container, html, raw) {
+    const wrap = document.createElement('div');
+    wrap.className = 'terminal-json-wrap';
+    const pre = document.createElement('pre');
+    pre.className = 'terminal-json-block';
+    pre.innerHTML = html;
+    wrap.appendChild(pre);
+    container.appendChild(wrap);
+    container.scrollTop = container.scrollHeight;
+    return pre;
+  }
+
+  async function typeInto(el, text, speed = 38) {
+    el.textContent = '';
+    for (const char of text) {
+      el.textContent += char;
+      await sleep(speed + Math.random() * 30);
+    }
+  }
+
+  async function revealJson(pre, html) {
+    const lines = html.split('\n');
+    pre.innerHTML = '';
+    for (let i = 0; i < lines.length; i += 1) {
+      pre.innerHTML = lines.slice(0, i + 1).join('\n');
+      await sleep(40);
+    }
+  }
+
+  async function runTerminal(root) {
+    const output = root.querySelector('[data-terminal-output]');
+    const active = root.querySelector('[data-terminal-active]');
+    const input = root.querySelector('[data-terminal-input]');
+
+    if (!output || !active || !input) return;
+
+    active.hidden = false;
+
+    for (const step of session) {
+      if (step.kind === 'cmd') {
+        await typeInto(input, step.text);
+        appendPromptLine(output, step.text);
+        input.textContent = '';
+        await sleep(100);
+      }
+
+      if (step.kind === 'out') {
+        appendOutput(output, step.text, step.className);
+        await sleep(220);
+      }
+
+      if (step.kind === 'json') {
+        const pre = appendJsonBlock(output, step.html, step.raw);
+        if (!prefersReducedMotion()) {
+          pre.innerHTML = '';
+          await revealJson(pre, step.html);
+        }
+        await sleep(180);
+      }
+    }
+
+    active.hidden = true;
+    const idleLine = appendPromptLine(output, '');
+    const cursor = document.createElement('span');
+    cursor.className = 'terminal-cursor terminal-cursor-idle';
+    cursor.setAttribute('aria-hidden', 'true');
+    idleLine.appendChild(cursor);
+  }
+
+  function runInstant(root) {
+    const output = root.querySelector('[data-terminal-output]');
+    const active = root.querySelector('[data-terminal-active]');
+    if (!output || !active) return;
+
+    active.hidden = true;
+
+    for (const step of session) {
+      if (step.kind === 'cmd') appendPromptLine(output, step.text);
+      if (step.kind === 'out') appendOutput(output, step.text, step.className || '');
+      if (step.kind === 'json') appendJsonBlock(output, step.html, step.raw);
+    }
+
+    const idleLine = appendPromptLine(output, '');
+    const cursor = document.createElement('span');
+    cursor.className = 'terminal-cursor terminal-cursor-idle';
+    idleLine.appendChild(cursor);
+  }
+
+  document.querySelectorAll('[data-terminal]').forEach((root) => {
+    if (!(root instanceof HTMLElement)) return;
+
+    const start = () => {
+      if (prefersReducedMotion()) runInstant(root);
+      else runTerminal(root);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((e) => e.isIntersecting)) {
+            observer.disconnect();
+            start();
+          }
+        },
+        { threshold: 0.3 },
+      );
+      observer.observe(root);
+    } else {
+      start();
+    }
+  });
+</script>
+
+<style>
+  .terminal-window {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(180deg, var(--color-surface-hover), var(--color-surface-elevated));
+    padding: 0.65rem 0.85rem;
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 9999px;
+  }
+
+  .dot-close { background: #ff5f57; }
+  .dot-min { background: #febc2e; }
+  .dot-max { background: #28c840; }
+
+  .terminal-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    padding-right: 3rem;
+  }
+
+  .terminal-body {
+    min-height: 17rem;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(255, 77, 77, 0.05), transparent 40%),
+      #0b0e11;
+    padding: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    color: #dbeafe;
+  }
+
+  .terminal-scroll {
+    max-height: 15rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #30363d transparent;
+  }
+
+  .terminal-line {
+    margin-bottom: 0.15rem;
+  }
+
+  .terminal-muted { color: #6e7681; }
+  .terminal-prompt { color: #ff4d4d; user-select: none; }
+  .terminal-cmd { color: #e6edf3; }
+  .terminal-out { color: #79c0ff; }
+
+  .terminal-json-wrap {
+    margin: 0.35rem 0 0.5rem;
+    overflow-x: auto;
+    border-left: 2px solid #30363d;
+    padding-left: 0.75rem;
+  }
+
+  .terminal-json-block {
+    margin: 0;
+    white-space: pre;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: #f8f8f2;
+    tab-size: 2;
+  }
+
+  .terminal-json-block :global(.json-key) { color: #f92672; }
+  .terminal-json-block :global(.json-string) { color: #e6db74; }
+  .terminal-json-block :global(.json-number) { color: #ae81ff; }
+
+  .terminal-active-line {
+    display: flex;
+    align-items: center;
+    min-height: 1.5rem;
+    margin-top: 0.15rem;
+  }
+
+  .terminal-input {
+    color: #e6edf3;
+    white-space: pre;
+  }
+
+  .terminal-cursor {
+    display: inline-block;
+    width: 0.55rem;
+    height: 1rem;
+    margin-left: 1px;
+    background: #58a6ff;
+    vertical-align: text-bottom;
+    animation: terminal-blink 1s step-end infinite;
+  }
+
+  @keyframes terminal-blink {
+    50% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-cursor { animation: none; }
+  }
+</style>

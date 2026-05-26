@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { site } from '../config/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Mustafa Erdem Köşk — email, GitHub, LinkedIn, Medium, and 500px."
+>
+  <section class="page-shell py-14 sm:py-18">
+    <SectionHeading
+      eyebrow="contact"
+      title="Say hello"
+      description="Open to interesting conversations about backend systems, developer tools, side projects, or photography."
+    />
+
+    <div class="mt-12 grid gap-4 lg:grid-cols-2">
+      <article class="dev-card p-6">
+        <h2 class="mono text-sm uppercase tracking-wider text-[var(--color-accent)]">email</h2>
+        <a href={`mailto:${site.email}`} class="mt-4 inline-block text-lg font-medium link-accent">
+          {site.email}
+        </a>
+      </article>
+
+      <article class="dev-card p-6">
+        <h2 class="mono text-sm uppercase tracking-wider text-[var(--color-accent)]">social</h2>
+        <SocialLinks class="mt-4" />
+      </article>
+    </div>
+  </section>
+</BaseLayout>

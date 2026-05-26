@@ -1,0 +1,49 @@
+---
+import type { GitHubRepo } from '../lib/github';
+import { languageColor } from '../lib/github';
+
+type Props = {
+  repo: GitHubRepo;
+};
+
+const { repo } = Astro.props;
+const color = languageColor(repo.language);
+const updated = new Date(repo.updated_at).toLocaleDateString('en-US', {
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<article class="dev-card p-4">
+  <div class="flex items-start justify-between gap-3">
+    <h3 class="mono text-sm font-semibold">
+      <a href={repo.html_url} target="_blank" rel="noopener noreferrer" class="text-[var(--color-blue)] hover:text-[var(--color-accent)] hover:underline">
+        {repo.name}
+      </a>
+    </h3>
+    <span class="mono text-xs text-[var(--color-muted)]">★ {repo.stargazers_count}</span>
+  </div>
+
+  <p class="mt-2 min-h-10 text-sm leading-6 text-[var(--color-muted)]">
+    {repo.description ?? 'Open source project.'}
+  </p>
+
+  <div class="mt-4 flex flex-wrap items-center gap-3 border-t border-[var(--color-border)] pt-3 text-xs text-[var(--color-muted)]">
+    {
+      repo.language && (
+        <span class="inline-flex items-center gap-1.5">
+          <span class="h-2.5 w-2.5 rounded-full" style={`background:${color}`}></span>
+          {repo.language}
+        </span>
+      )
+    }
+    <span class="mono">updated {updated}</span>
+    {
+      repo.homepage && (
+        <a href={repo.homepage} target="_blank" rel="noopener noreferrer" class="text-[var(--color-accent)] hover:underline">
+          demo
+        </a>
+      )
+    }
+  </div>
+</article>

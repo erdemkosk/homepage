@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import PhotoCard from '../components/PhotoCard.astro';
+import { site } from '../config/site';
+import { getPhotosForPage } from '../lib/px500';
+
+const photos = await getPhotosForPage(site.github, { limit: 12 });
+---
+
+<BaseLayout
+  title="Photography"
+  description="Photography by Erdem Köşk — selected frames from 500px."
+>
+  <section class="page-shell py-14 sm:py-18">
+    <SectionHeading
+      eyebrow="photography"
+      title="Frames from walks and travels"
+      description={`${photos.length} photos synced from 500px.`}
+    />
+
+    <div class="mt-8">
+      <a href={site.social.px500} target="_blank" rel="noopener noreferrer" class="mono text-sm text-[var(--color-accent)] hover:underline">
+        500px.com/{site.github} →
+      </a>
+    </div>
+
+    {
+      photos.length > 0 ? (
+        <div class="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {photos.map((photo, index) => (
+            <PhotoCard photo={photo} index={index} />
+          ))}
+        </div>
+      ) : (
+        <p class="mt-10 text-[var(--color-muted)]">
+          Photos could not be loaded from 500px. Visit
+          {' '}
+          <a href={site.social.px500} class="link-accent">{site.social.px500}</a>.
+        </p>
+      )
+    }
+  </section>
+</BaseLayout>
+
+<script>
+  function initPhotoCards(root: ParentNode = document) {
+    root.querySelectorAll<HTMLElement>('.photo-media').forEach((media) => {
+      const img = media.querySelector('img');
+      if (!img || media.classList.contains('is-loaded')) return;
+
+      const markLoaded = () => media.classList.add('is-loaded');
+      const markError = () => media.classList.add('is-error');
+
+      if (img.complete && img.naturalWidth > 0) {
+        markLoaded();
+        return;
+      }
+
+      img.addEventListener('load', markLoaded, { once: true });
+      img.addEventListener(
+        'error',
+        () => {
+          markError();
+          markLoaded();
+        },
+        { once: true },
+      );
+    });
+  }
+
+  initPhotoCards();
+</script>

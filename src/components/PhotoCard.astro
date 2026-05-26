@@ -1,0 +1,30 @@
+---
+import type { Photo } from '../data/photos';
+
+type Props = {
+  photo: Photo;
+  index?: number;
+};
+
+const { photo, index = 0 } = Astro.props;
+---
+
+<figure class="dev-card group overflow-hidden fade-up" style={`animation-delay: ${index * 70}ms`}>
+  <a href={photo.href ?? 'https://500px.com/erdemkosk'} target="_blank" rel="noopener noreferrer" class="block">
+    <div class="photo-media relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-hover)]">
+      <div class="photo-skeleton absolute inset-0" aria-hidden="true"></div>
+      <img
+        src={photo.src}
+        alt={`${photo.title} by Erdem Köşk`}
+        loading="lazy"
+        decoding="async"
+        width="800"
+        height="600"
+        class="photo-image relative z-10 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+      />
+    </div>
+    <figcaption class="border-t border-[var(--color-border)] px-4 py-3">
+      <p class="text-sm font-medium">{photo.title}</p>
+    </figcaption>
+  </a>
+</figure>
