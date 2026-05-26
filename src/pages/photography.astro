@@ -43,31 +43,10 @@ const photos = await getPhotosForPage(site.github, { limit: 12 });
   </section>
 </BaseLayout>
 
-<script>
-  function initPhotoCards(root: ParentNode = document) {
-    root.querySelectorAll<HTMLElement>('.photo-media').forEach((media) => {
-      const img = media.querySelector('img');
-      if (!img || media.classList.contains('is-loaded')) return;
-
-      const markLoaded = () => media.classList.add('is-loaded');
-      const markError = () => media.classList.add('is-error');
-
-      if (img.complete && img.naturalWidth > 0) {
-        markLoaded();
-        return;
-      }
-
-      img.addEventListener('load', markLoaded, { once: true });
-      img.addEventListener(
-        'error',
-        () => {
-          markError();
-          markLoaded();
-        },
-        { once: true },
-      );
-    });
-  }
-
-  initPhotoCards();
+<script is:inline>
+  document.querySelectorAll('.photo-media img').forEach(function (img) {
+    if (img.complete && img.naturalWidth > 0) {
+      img.closest('.photo-media')?.classList.add('is-loaded');
+    }
+  });
 </script>

@@ -7,6 +7,7 @@ type Props = {
 };
 
 const { photo, index = 0 } = Astro.props;
+const eager = index < 3;
 ---
 
 <figure class="dev-card group overflow-hidden fade-up" style={`animation-delay: ${index * 70}ms`}>
@@ -16,11 +17,14 @@ const { photo, index = 0 } = Astro.props;
       <img
         src={photo.src}
         alt={`${photo.title} by Erdem Köşk`}
-        loading="lazy"
+        loading={eager ? 'eager' : 'lazy'}
         decoding="async"
-        width="800"
-        height="600"
+        fetchpriority={index === 0 ? 'high' : 'auto'}
+        width="1400"
+        height="1050"
         class="photo-image relative z-10 h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+        onload="this.closest('.photo-media')?.classList.add('is-loaded')"
+        onerror="this.closest('.photo-media')?.classList.add('is-error','is-loaded')"
       />
     </div>
     <figcaption class="border-t border-[var(--color-border)] px-4 py-3">

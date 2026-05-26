@@ -150,16 +150,17 @@ html.light body {
 }
 
 .photo-media .photo-image {
-  opacity: 0;
+  opacity: 1;
 }
 
-.photo-media.is-loaded .photo-image {
+.photo-media:not(.is-loaded) .photo-skeleton {
   opacity: 1;
 }
 
 .photo-media.is-loaded .photo-skeleton {
   opacity: 0;
   transition: opacity 0.35s ease;
+  pointer-events: none;
 }
 
 .photo-media.is-error .photo-image {

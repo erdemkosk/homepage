@@ -1,5 +1,6 @@
-import { access, mkdir, readFile, writeFile } from 'node:fs/promises';
+import { access, mkdir, readFile, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import sharp from 'sharp';
 
 export type PxPhoto = {
   id: string;
@@ -13,6 +14,18 @@ type GraphQLPhotoNode = {
   canonicalPath: string;
   legacyId: string;
   images: { url: string; size: number }[];
+};
+
+type RemotePhoto = {
+  id: string;
+  title: string;
+  href: string;
+  imageUrl: string;
+};
+
+type PhotoManifest = {
+  updatedAt: string;
+  photos: PxPhoto[];
 };
 
 const QUERY = `
@@ -35,12 +48,11 @@ const QUERY = `
   }
 `;
 
-type PhotoManifest = {
-  updatedAt: string;
-  photos: PxPhoto[];
-};
-
 const MANIFEST_FILENAME = 'manifest.json';
+const MANIFEST_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+const MAX_DISPLAY_WIDTH = 1400;
+const JPEG_QUALITY = 82;
+const TARGET_MAX_BYTES = 320_000;
 
 async function fileExists(filePath: string): Promise<boolean> {
   try {
@@ -56,7 +68,45 @@ function pickImageUrl(images: GraphQLPhotoNode['images']): string {
   return sorted[0]?.url ?? images[0]?.url ?? '';
 }
 
-export async function fetch500pxPhotos(username: string, limit = 12): Promise<Omit<PxPhoto, 'src'>[]> {
+async function optimizePhotoFile(filePath: string): Promise<void> {
+  const info = await stat(filePath);
+  if (info.size <= TARGET_MAX_BYTES) return;
+
+  const optimized = await sharp(filePath)
+    .rotate()
+    .resize({
+      width: MAX_DISPLAY_WIDTH,
+      height: MAX_DISPLAY_WIDTH,
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
+    .jpeg({ quality: JPEG_QUALITY, mozjpeg: true })
+    .toBuffer();
+
+  await writeFile(filePath, optimized);
+}
+
+async function saveRemotePhoto(imageUrl: string, filePath: string): Promise<boolean> {
+  const imageResponse = await fetch(imageUrl);
+  if (!imageResponse.ok) return false;
+
+  const buffer = Buffer.from(await imageResponse.arrayBuffer());
+  const optimized = await sharp(buffer)
+    .rotate()
+    .resize({
+      width: MAX_DISPLAY_WIDTH,
+      height: MAX_DISPLAY_WIDTH,
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
+    .jpeg({ quality: JPEG_QUALITY, mozjpeg: true })
+    .toBuffer();
+
+  await writeFile(filePath, optimized);
+  return true;
+}
+
+export async function fetch500pxPhotos(username: string, limit = 12): Promise<RemotePhoto[]> {
   try {
     const response = await fetch('https://api.500px.com/graphql', {
       method: 'POST',
@@ -98,41 +148,71 @@ export async function fetch500pxPhotos(username: string, limit = 12): Promise<Om
   }
 }
 
-export async function loadCachedPhotos(
-  options: { limit?: number; cacheDir?: string } = {},
-): Promise<PxPhoto[]> {
-  const { limit = 12, cacheDir = 'public/photos/500px' } = options;
+async function readManifest(cacheDir: string): Promise<PhotoManifest | null> {
   const manifestPath = path.resolve(process.cwd(), cacheDir, MANIFEST_FILENAME);
 
   try {
     const raw = await readFile(manifestPath, 'utf-8');
-    const manifest = JSON.parse(raw) as PhotoManifest;
-    const verified: PxPhoto[] = [];
-
-    for (const photo of manifest.photos.slice(0, limit)) {
-      const filePath = path.resolve(process.cwd(), 'public', photo.src.replace(/^\//, ''));
-      if (await fileExists(filePath)) verified.push(photo);
-    }
-
-    return verified;
+    return JSON.parse(raw) as PhotoManifest;
   } catch {
-    return [];
+    return null;
   }
+}
+
+function isManifestFresh(manifest: PhotoManifest): boolean {
+  const age = Date.now() - new Date(manifest.updatedAt).getTime();
+  return age >= 0 && age < MANIFEST_MAX_AGE_MS;
+}
+
+async function verifyCachedPhotos(
+  photos: PxPhoto[],
+  limit: number,
+): Promise<PxPhoto[]> {
+  const verified: PxPhoto[] = [];
+
+  for (const photo of photos.slice(0, limit)) {
+    const filePath = path.resolve(process.cwd(), 'public', photo.src.replace(/^\//, ''));
+    if (!(await fileExists(filePath))) continue;
+
+    await optimizePhotoFile(filePath);
+    verified.push(photo);
+  }
+
+  return verified;
+}
+
+export async function loadCachedPhotos(
+  options: { limit?: number; cacheDir?: string } = {},
+): Promise<PxPhoto[]> {
+  const { limit = 12, cacheDir = 'public/photos/500px' } = options;
+  const manifest = await readManifest(cacheDir);
+  if (!manifest) return [];
+
+  return verifyCachedPhotos(manifest.photos, limit);
 }
 
 export async function getPhotosForPage(
   username: string,
   options: { limit?: number; cacheDir?: string } = {},
 ): Promise<PxPhoto[]> {
-  const cached = await loadCachedPhotos(options);
-  if (cached.length > 0) return cached;
+  const { limit = 12, cacheDir = 'public/photos/500px' } = options;
+  const manifest = await readManifest(cacheDir);
+  const cached = manifest ? await verifyCachedPhotos(manifest.photos, limit) : [];
 
-  return get500pxPhotos(username, options);
+  if (cached.length > 0 && manifest && isManifestFresh(manifest)) {
+    return cached;
+  }
+
+  const synced = await sync500pxPhotos(username, options, cached);
+  if (synced.length > 0) return synced;
+
+  return cached;
 }
 
-export async function get500pxPhotos(
+async function sync500pxPhotos(
   username: string,
-  options: { limit?: number; cacheDir?: string } = {},
+  options: { limit?: number; cacheDir?: string },
+  fallback: PxPhoto[],
 ): Promise<PxPhoto[]> {
   const { limit = 12, cacheDir = 'public/photos/500px' } = options;
   const remotePhotos = await fetch500pxPhotos(username, limit);
@@ -153,10 +233,10 @@ export async function get500pxPhotos(
       const alreadyCached = await fileExists(filePath);
 
       if (!alreadyCached) {
-        const imageResponse = await fetch(photo.imageUrl);
-        if (!imageResponse.ok) continue;
-        const buffer = Buffer.from(await imageResponse.arrayBuffer());
-        await writeFile(filePath, buffer);
+        const saved = await saveRemotePhoto(photo.imageUrl, filePath);
+        if (!saved) continue;
+      } else {
+        await optimizePhotoFile(filePath);
       }
 
       photos.push({
@@ -176,7 +256,16 @@ export async function get500pxPhotos(
       photos,
     };
     await writeFile(path.join(absoluteDir, MANIFEST_FILENAME), JSON.stringify(manifest, null, 2));
+    return photos;
   }
 
-  return photos;
+  return fallback;
+}
+
+/** @deprecated Use getPhotosForPage instead. */
+export async function get500pxPhotos(
+  username: string,
+  options: { limit?: number; cacheDir?: string } = {},
+): Promise<PxPhoto[]> {
+  return getPhotosForPage(username, options);
 }
