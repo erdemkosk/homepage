@@ -23,14 +23,7 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
-      - name: Publish site to master
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: master
-          force_orphan: true
-      - name: Publish site to gh-pages
+      - name: Publish to gh-pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
