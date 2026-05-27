@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#0d1117"/>
+  <rect x="60" y="60" width="1080" height="510" rx="12" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+  <text x="100" y="180" fill="#ff4d4d" font-family="monospace" font-size="28">// erdemkosk.com</text>
+  <text x="100" y="280" fill="#e6edf3" font-family="sans-serif" font-size="64" font-weight="700">Mustafa Erdem Kö?k</text>
+  <text x="100" y="350" fill="#8b949e" font-family="monospace" font-size="32">Senior Backend Engineer</text>
+  <rect x="100" y="400" width="420" height="120" rx="8" fill="#272822"/>
+  <text x="120" y="445" fill="#f92672" font-family="monospace" font-size="22">"role"</text>
+  <text x="220" y="445" fill="#e6db74" font-family="monospace" font-size="22">: "backend engineer"</text>
+  <text x="120" y="485" fill="#f92672" font-family="monospace" font-size="22">"stack"</text>
+  <text x="220" y="485" fill="#e6db74" font-family="monospace" font-size="22">: ["Go", "Node.js"]</text>
+</svg>
