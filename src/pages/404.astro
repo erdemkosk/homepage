@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { nav, site } from '../config/site';
+
+const loginLine = `Last login: ${new Date().toLocaleString('en-US', {
+  weekday: 'short',
+  month: 'short',
+  day: 'numeric',
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+})} on ttys001`;
+---
+
+<BaseLayout title="404" description="Page not found." noindex={true}>
+  <section class="page-shell flex min-h-[calc(100vh-220px)] items-center py-14 sm:py-20">
+    <div class="mx-auto w-full max-w-[760px] fade-up">
+      <div class="terminal-window dev-card overflow-hidden">
+        <div class="terminal-header">
+          <div class="terminal-dots" aria-hidden="true">
+            <span class="dot dot-close"></span>
+            <span class="dot dot-min"></span>
+            <span class="dot dot-max"></span>
+          </div>
+          <span class="terminal-title mono">erdemkosk — zsh — 80×24</span>
+        </div>
+
+        <div class="terminal-body mono" aria-label="404 terminal session">
+          <div class="terminal-line terminal-muted">{loginLine}</div>
+          <div class="terminal-line terminal-muted">&nbsp;</div>
+
+          <div class="terminal-line terminal-cmd-line">
+            <span class="terminal-prompt">erdemkosk@dev ~ % </span>
+            <span class="terminal-cmd" data-not-found-command>cd /…</span>
+          </div>
+          <div class="terminal-line terminal-error" data-not-found-error>
+            cd: no such file or directory: /…
+          </div>
+
+          <div class="terminal-line terminal-muted">&nbsp;</div>
+
+          <div class="terminal-line terminal-cmd-line">
+            <span class="terminal-prompt">erdemkosk@dev ~ % </span>
+            <span class="terminal-cmd" data-not-found-command-2>…</span>
+          </div>
+          <div class="terminal-line terminal-error">zsh: command not found: <span data-not-found-name>page</span></div>
+
+          <div class="terminal-line terminal-muted">&nbsp;</div>
+
+          <div class="terminal-line terminal-cmd-line">
+            <span class="terminal-prompt">erdemkosk@dev ~ % </span>
+            <span class="terminal-cmd">ls ~</span>
+          </div>
+          <div class="terminal-line terminal-out">
+            {
+              nav.map((item) => (
+                <a href={item.href} class="terminal-link">
+                  {item.href === '/' ? 'home' : item.label.toLowerCase().replace(/\s+/g, '-')}
+                </a>
+              ))
+            }
+          </div>
+
+          <div class="terminal-line terminal-muted">&nbsp;</div>
+
+          <div class="terminal-line terminal-cmd-line">
+            <span class="terminal-prompt">erdemkosk@dev ~ % </span>
+            <a href="/" class="terminal-link terminal-cmd">cd ~</a>
+            <span class="terminal-cursor" aria-hidden="true"></span>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-6 text-center text-sm text-[var(--color-muted)]">
+        <span class="mono text-[var(--color-accent)]">404</span> · page not found on {site.url.replace('https://', '')}
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  (function () {
+    var pathname = window.location.pathname || '/';
+    var normalized = pathname.endsWith('/') && pathname.length > 1 ? pathname.slice(0, -1) : pathname;
+    var segments = normalized.split('/').filter(Boolean);
+    var commandName = segments[segments.length - 1] || 'home';
+    var displayPath = normalized === '' ? '/' : normalized;
+
+    document.querySelectorAll('[data-not-found-command]').forEach(function (el) {
+      el.textContent = 'cd ' + displayPath;
+    });
+
+    var errorEl = document.querySelector('[data-not-found-error]');
+    if (errorEl) {
+      errorEl.textContent = 'cd: no such file or directory: ' + displayPath;
+    }
+
+    var commandTwo = document.querySelector('[data-not-found-command-2]');
+    if (commandTwo) {
+      commandTwo.textContent = commandName;
+    }
+
+    var nameEl = document.querySelector('[data-not-found-name]');
+    if (nameEl) {
+      nameEl.textContent = commandName;
+    }
+  })();
+</script>
+
+<style>
+  .terminal-window {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 20px 50px rgba(0, 0, 0, 0.35);
+  }
+
+  .terminal-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    border-bottom: 1px solid var(--color-border);
+    background: linear-gradient(180deg, var(--color-surface-hover), var(--color-surface-elevated));
+    padding: 0.65rem 0.85rem;
+  }
+
+  .terminal-dots {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 9999px;
+  }
+
+  .dot-close { background: #ff5f57; }
+  .dot-min { background: #febc2e; }
+  .dot-max { background: #28c840; }
+
+  .terminal-title {
+    flex: 1;
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--color-muted);
+    padding-right: 3rem;
+  }
+
+  .terminal-body {
+    min-height: 18rem;
+    background:
+      radial-gradient(circle at 20% 0%, rgba(255, 77, 77, 0.05), transparent 40%),
+      #0b0e11;
+    padding: 1rem;
+    font-size: 0.8125rem;
+    line-height: 1.55;
+    color: #dbeafe;
+  }
+
+  .terminal-line {
+    margin-bottom: 0.15rem;
+  }
+
+  .terminal-muted { color: #6e7681; }
+  .terminal-prompt { color: #ff4d4d; user-select: none; }
+  .terminal-cmd { color: #e6edf3; }
+  .terminal-out { color: #79c0ff; }
+  .terminal-error { color: #ff7b72; }
+
+  .terminal-link {
+    color: #79c0ff;
+    text-decoration: none;
+    margin-right: 1rem;
+    transition: color 0.15s ease;
+  }
+
+  .terminal-link:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+  }
+
+  .terminal-cursor {
+    display: inline-block;
+    width: 0.55rem;
+    height: 1rem;
+    margin-left: 0.35rem;
+    background: #58a6ff;
+    vertical-align: text-bottom;
+    animation: terminal-blink 1s step-end infinite;
+  }
+
+  @keyframes terminal-blink {
+    50% { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-cursor { animation: none; }
+  }
+</style>
